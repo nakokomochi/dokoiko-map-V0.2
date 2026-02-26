@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>どこいこMap</title>
+    <link rel="stylesheet" href="ChoiceYourRoad.css">
+    <link rel="icon" href="dog.png">
+</head>
+
+<body>
+  <div class="app">
+      <div class="logo">
+       <img src="dog.png" alt="どこいこMapロゴ" class="site-icon">
+       <h1>どこいこMap</h1>
+      </div>
+
+      <p class="site-description"> 
+        ドライブ・ツーリングスポットを提案するサイトです。
+        <br> 
+        出発地を入力し、片道の移動時間、高速道路の利用有無（※30分は高速なし）を選んでください。
+        <br> オレンジ色の「どこいこうかな！」ボタンを押すと、ランダムで大まかな目的地をご提案します。 
+      </p>
+
+    <section class="panel-top">
+      <div class="inputs">
+        <!-- ▼ 出発地入力 -->
+     <label>出発地の住所を入力してね：</label><br>
+        <input id="startLocation" type="text" placeholder="例：東京都渋谷区">
+     <br>
+
+     <button onclick="getCurrentLocation()" class="location-btn">
+      📍 現在地を使用する
+      </button>
+      <p style="font-size:12px; color:gray;">
+      ※現在地は保存されません。地図表示のみに使用します。
+      </p>
+
+     <label>移動時間を選択:</label>
+     <select id="timeSelect" style="width: 300px;">
+        <option value="30">30分</option>
+        <option value="60">1時間</option>
+        <option value="90">1時間30分</option>
+        <option value="120">2時間</option>
+        <option value="150">2時間30分</option>
+        <option value="180">3時間</option>
+        </select>
+
+     <br>
+
+     <label>高速道路の利用:</label>
+     <select id="highway" style="width: 300px;">
+        <option value="yes">使う</option>
+        <option value="no">使わない</option>
+     </select>
+
+     <br>
+    <button onclick="searchSpot()">どこいこうかな！</button>
+     <br>
+     <div class="results" id="resultsBox">
+      <div id="result"></div>
+     </div>
+    </section>   
+
+    <section class="panel-map">
+    <!-- ▼ 地図を出す場所 -->
+    <div id="map"></div>
+    </section>    
+
+    <script src="ChoiceYourRoad.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6RRMecOn0qiBCKLvToDoHJFFimgiBR74&callback=initMap" async defer></script>
+
+</div>
+</body>
+</html>

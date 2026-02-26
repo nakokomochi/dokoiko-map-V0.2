@@ -1,0 +1,197 @@
+/* ===== ベース設定 ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  background: #111111;
+  color: white;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== タイトル（①） ===== */
+.app-title {
+  flex: 0.8;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  background: #000;
+  border-bottom: 3px solid #ff6a00;
+}
+
+/* ===== 入力エリア（②） ===== */
+.panel-top {
+  flex: 1.5;
+  padding: 10px 15px;
+  background: #1a1a1a;
+  border-bottom: 3px solid #ff6a00;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.panel-top input,
+.panel-top select,
+.panel-top button {
+  width: 100%;
+  margin-top: 8px;
+  padding: 12px;
+  font-size: 16px;  /* ← ここ重要 */
+  border-radius: 10px;
+  border: none;
+}
+
+.panel-top button {
+  background: #ff6a00;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ===== 結果エリア（③） ===== */
+.results {
+  margin-top: 90px;
+  padding: 30px 20px;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  background: #000;
+  margin-left: 15px;
+  margin-right: 15px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  min-height: 100px;
+}
+
+/* ===== 地図エリア（④） ===== */
+.panel-map {
+  flex: 3;
+  margin-top: 20px;
+}
+
+#map {
+  width: 100%;
+}
+
+/* =========================
+   📱 スマホ最適化
+========================= */
+@media (max-width: 768px) {
+
+  .panel-top {
+    padding: 18px 20px;
+  }
+
+  .panel-top input,
+  .panel-top select {
+    background: #2a2a2a;
+    color: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  }
+
+  .panel-top button {
+    padding: 14px;
+    font-size: 17px;
+    border-radius: 14px;
+    background: linear-gradient(45deg, #ff6a00, #ff8800);
+  }
+
+  #map {
+    aspect-ratio: 1 / 1;
+  }
+
+}
+
+/* =========================
+   💻 PC
+========================= */
+@media (min-width: 769px) {
+
+  #map {
+    height: 700px;   /* PCは横長 */
+  }
+
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.site-icon {
+  width: 80px;
+  height: auto;
+}
+
+
+.results {
+  background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+  color: #2d3436;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+
+  /* 初期は非表示 */
+  opacity: 0;
+  transform: scale(0.7);
+  pointer-events: none;
+}
+
+/* 表示アニメーション */
+.results.show {
+  animation: popIn 0.6s ease forwards;
+  pointer-events: auto;
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-5deg);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.1) rotate(3deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+/* 🎉 紙吹雪 */
+.confetti {
+  position: fixed;
+  width: 8px;
+  height: 12px;
+  top: -20px;
+  opacity: 0.9;
+  animation: fall linear forwards;
+  z-index: 9999;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.site-description {
+  text-align: center;
+  max-width: 850px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
