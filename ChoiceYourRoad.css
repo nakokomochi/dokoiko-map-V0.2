@@ -44,12 +44,13 @@ body {
 .panel-top select,
 .panel-top button {
   width: 100%;
-  margin-top: 8px;
-  padding: 12px;
+  margin-top: 10px;
+  padding: 14px;
   font-size: 16px;
-  /* ← ここ重要 */
   border-radius: 10px;
   border: none;
+
+  min-height: 50px;   /* ←スマホで押しやすくする */
 }
 
 .panel-top button {
